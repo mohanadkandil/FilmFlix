@@ -5,6 +5,8 @@ import { useTheme } from '@mui/styles';
 import useStyles from './styles';
 import { useGetGenersQuery } from '../../services/TMDB';
 
+import genreIcons from '../../assets/genres';
+
 const categories = [
   { label: 'Popular', value: 'popular' },
   { label: 'Top Rated', value: 'top_rated' },
@@ -36,9 +38,9 @@ export const Sidebar = ({ setMobileOpen }) => {
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
             <ListItem onClick={() => {}} button>
-              {/* <ListItemIcon>
-                <img src={redLogo} alt="" className={classes.genreImages} height={30} />
-              </ListItemIcon> */}
+              <ListItemIcon>
+                <img src={genreIcons[label.toLowerCase()]} alt="" className={classes.genreImages} height={30} />
+              </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
           </Link>
@@ -54,9 +56,9 @@ export const Sidebar = ({ setMobileOpen }) => {
         ) : data.genres.map(({ name, id }) => (
           <Link key={name} className={classes.links} to="/">
             <ListItem onClick={() => {}} button>
-              {/* <ListItemIcon>
-                <img src={redLogo} alt="" className={classes.genreImages} height={30} />
-              </ListItemIcon> */}
+              <ListItemIcon>
+                <img src={genreIcons[name.toLowerCase()]} alt="" className={classes.genreImages} height={30} />
+              </ListItemIcon>
               <ListItemText primary={name} />
             </ListItem>
           </Link>
